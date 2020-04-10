@@ -6,9 +6,12 @@ public class Jogador {
     String nome;
 
     public Jogador CriarJogador(int id, String nome) {
-        this.id = id;
-        this.nome = nome;
-        return null;
+
+        Jogador jogador = new Jogador();
+        jogador.setId(id);
+        jogador.setNome(nome);
+
+        return jogador;
     }
 
     public int getId() {

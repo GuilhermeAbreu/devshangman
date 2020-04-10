@@ -21,9 +21,8 @@ public class JogoDaForca {
 
         int i = 1;
 
-        List<Jogador> jogadores = new ArrayList<Jogador>();
+        List<Jogador> jogadores = new ArrayList<>();
         Jogador jogador = new Jogador();
-        
 
         while (i <= opcao){
             Scanner scanner = new Scanner(System.in);
@@ -37,15 +36,11 @@ public class JogoDaForca {
                 System.out.println("Acima de 3 digitos");
             }
 
-            Jogador nomeJogador = jogadores.get(0);
+        }
 
-            for(Jogador anObject : jogadores){
-                // teste de commiti a antiga nao pode apaga
-                //aqui nao pode ser apagdo
-                // agora sim nao pode apagar
-                System.out.println("aqui e um teste");
-                System.out.println(anObject);
-            }
+        for (int j = 0; j < 0; j++){
+
+            jogadores.get(j);
 
         }
 

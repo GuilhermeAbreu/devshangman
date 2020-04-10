@@ -39,11 +39,8 @@ public class JogoDaForca {
 
             Jogador nomeJogador = jogadores.get(0);
 
-            for(Object anObject : jogadores){
-                //cast needed
-                MyObject theMyObject = (MyObject) anObject;
-
-                //do someting to anObject...
+            for(Jogador anObject : jogadores){
+                System.out.println(anObject);
             }
 
         }

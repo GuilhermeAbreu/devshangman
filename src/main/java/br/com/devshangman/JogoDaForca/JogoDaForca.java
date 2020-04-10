@@ -40,6 +40,7 @@ public class JogoDaForca {
             Jogador nomeJogador = jogadores.get(0);
 
             for(Jogador anObject : jogadores){
+                System.out.println("aqui e um teste");
                 System.out.println(anObject);
             }
 

@@ -42,6 +42,7 @@ public class JogoDaForca {
             for(Jogador anObject : jogadores){
                 // teste de commiti a antiga nao pode apaga
                 //aqui nao pode ser apagdo
+                // agora sim nao pode apagar
                 System.out.println("aqui e um teste");
                 System.out.println(anObject);
             }

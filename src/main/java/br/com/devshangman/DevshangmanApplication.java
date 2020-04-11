@@ -5,6 +5,7 @@ public class DevshangmanApplication {
 
 	public static void main(String[] args){
 
+		// inico da class JogoDaJogo
 		JogoDaForca iniciarjogo = new JogoDaForca();
 		iniciarjogo.iniciarJogoforca();
 

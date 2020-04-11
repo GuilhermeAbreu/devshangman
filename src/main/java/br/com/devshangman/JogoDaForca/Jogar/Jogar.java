@@ -26,7 +26,6 @@ public class Jogar {
 
     private void splitarPalavaParaletrasUnicas(Palavras palavras){
 
-        System.out.println("Palavra: " + palavras.getPalavra());
         letrasDasPlarvas = palavras.getPalavra().split("");
 
     }
@@ -63,13 +62,17 @@ public class Jogar {
         String[] letrasSeparadas = letra.split("");
 
         for(String letras : letrasSeparadas){
+
             for(String letrasDapalavraGerada : letrasDasPlarvas){
+
                 if(letras.equals(letrasDapalavraGerada)){
                     System.out.println("Letra " + letras + " tem na palavra");
                 }else{
                     System.out.println("Letra " + letras + " não tem na palavra");
                 }
+
             }
+
         }
 
     }

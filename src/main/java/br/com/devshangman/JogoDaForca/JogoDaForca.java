@@ -25,7 +25,7 @@ public class JogoDaForca {
 
         while (i <= opcao){
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Jogador "+i+" :");
+            System.out.print("Jogador "+i+" : ");
             String nome = scanner.nextLine();
 
             if(nome.length() > 3){

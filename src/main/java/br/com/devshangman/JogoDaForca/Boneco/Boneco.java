@@ -197,7 +197,6 @@ public class Boneco {
     }
 
     public void montarBoneco(){
-        System.out.println(getTotaldeErros());
         System.out.println(this.partesDoBoneco[getTotaldeErros()]);
     }
 

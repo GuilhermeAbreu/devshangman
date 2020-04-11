@@ -1,6 +1,6 @@
 package br.com.devshangman.JogoDaForca.Boneco;
 
-public class CriarBoneco {
+public class Boneco {
 
     String[] partesDoBoneco = new String[6];
     int TotaldeErros = 0;
@@ -194,13 +194,15 @@ public class CriarBoneco {
                 "\t |████████|\t \n" +
                 "\t |████████|\t   \n" +
                 " |████████████████|\n";
-
     }
 
-    public String montarBoneco(){
+    public void montarBoneco(){
+        System.out.println(getTotaldeErros());
+        System.out.println(this.partesDoBoneco[getTotaldeErros()]);
+    }
 
-        return partesDoBoneco[getTotaldeErros()];
-
+    public void setTotaldeErros() {
+        TotaldeErros++;
     }
 
     public void reiniciarBoneco() {
@@ -211,4 +213,7 @@ public class CriarBoneco {
         return TotaldeErros;
     }
 
+    public String[] getPartesDoBoneco() {
+        return partesDoBoneco;
+    }
 }

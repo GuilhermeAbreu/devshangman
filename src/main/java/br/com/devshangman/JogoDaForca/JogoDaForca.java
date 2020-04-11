@@ -1,7 +1,7 @@
 package br.com.devshangman.JogoDaForca;
 
 import br.com.devshangman.JogoDaForca.Audios.Audios;
-import br.com.devshangman.JogoDaForca.Boneco.CriarBoneco;
+import br.com.devshangman.JogoDaForca.Boneco.Boneco;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Jogar.Jogar;
 
@@ -10,11 +10,9 @@ import java.util.*;
 public class JogoDaForca {
 
     Audios audios = new Audios();
-    CriarBoneco boneco = new CriarBoneco();
 
     public void iniciarJogoforca(){
         Audios.executaSom("D:\\mario.wav");
-        boneco.setPartesDoBoneco();
         jogoDaForca();
     }
 

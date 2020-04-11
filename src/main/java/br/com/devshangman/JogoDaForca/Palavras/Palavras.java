@@ -71,6 +71,7 @@ public class Palavras {
         setDica(palavraComDicasplit[1]);
     }
 
+
     public void setPalavra(String palavra) {
         this.palavra = palavra;
     }

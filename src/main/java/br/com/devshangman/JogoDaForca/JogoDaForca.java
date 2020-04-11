@@ -3,6 +3,7 @@ package br.com.devshangman.JogoDaForca;
 import br.com.devshangman.JogoDaForca.Audios.Audios;
 import br.com.devshangman.JogoDaForca.Boneco.CriarBoneco;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
+import br.com.devshangman.JogoDaForca.Jogar.Jogar;
 
 import java.util.*;
 
@@ -38,12 +39,14 @@ public class JogoDaForca {
 
         }
 
-        for (int j = 0; j < 0; j++){
+        System.out.println("Jogadores: ");
 
-            jogadores.get(j);
-
+        for (Jogador dadosJogador : jogadores) {
+            System.out.println("Jogador " + dadosJogador.getId() + ": " + dadosJogador.getNome());
         }
 
+        Jogar jogar = new Jogar();
+        jogar.iniciaJogoDaForca(jogadores);
     }
 
     public void jogoDaForca(){

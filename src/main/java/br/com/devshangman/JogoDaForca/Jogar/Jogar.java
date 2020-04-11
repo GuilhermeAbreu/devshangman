@@ -64,6 +64,7 @@ public class Jogar {
     private void validarResposta(String letra){
 
         int letters = 0;
+        int count = 0;
 
         String[] letrasSeparadas = letra.split("");
 
@@ -79,11 +80,17 @@ public class Jogar {
         for(String letras : letrasSeparadas){
 
             for(String letrasDapalavraGerada : letrasDasPlarvas){
-
+                    
                 if(letras.equals(letrasDapalavraGerada)){
                     System.out.println("Letra " + letras + " tem na palavra");
                 }else{
+                    
+                    count ++;
                     System.out.println("Letra " + letras + " não tem na palavra");
+                    if(letters == count)
+                    {
+                        setErro();
+                    }
                 }
 
             }

@@ -10,6 +10,9 @@ public class Jogar {
 
     List<Jogador> jogadores;
     Boneco boneco = new Boneco();
+    String palavraOculta;
+    String letrasDigitadas;
+    String[] letrasDasPlarvas;
 
     public void iniciaJogoDaForca(List<Jogador> jogadores){
         setJogadores(jogadores);
@@ -17,7 +20,15 @@ public class Jogar {
         palavras.setPalavraComDiga();
         palavras.buscarPalavraComDica();
         boneco.setPartesDoBoneco();
-        jogoDaForca(palavras);
+        splitarPalavaParaletrasUnicas(palavras);
+        jogoDaForca();
+    }
+
+    private void splitarPalavaParaletrasUnicas(Palavras palavras){
+
+        System.out.println("Palavra: " + palavras.getPalavra());
+        letrasDasPlarvas = palavras.getPalavra().split("");
+
     }
 
     public void escreverBoneco(){
@@ -36,13 +47,29 @@ public class Jogar {
         boneco.setTotaldeErros();
     }
 
-    public void jogoDaForca(Palavras palavras){
+    public void jogoDaForca(){
 
         while (getErros() < getBoneco().length){
             Scanner scanner = new Scanner(System.in);
             escreverBoneco();
-            String s = scanner.nextLine();
-            setErro();
+            String letra = scanner.nextLine();
+            validarResposta(letra);
+        }
+
+    }
+
+    private void validarResposta(String letra){
+
+        String[] letrasSeparadas = letra.split("");
+
+        for(String letras : letrasSeparadas){
+            for(String letrasDapalavraGerada : letrasDasPlarvas){
+                if(letras.equals(letrasDapalavraGerada)){
+                    System.out.println("Letra " + letras + " tem na palavra");
+                }else{
+                    System.out.println("Letra " + letras + " não tem na palavra");
+                }
+            }
         }
 
     }

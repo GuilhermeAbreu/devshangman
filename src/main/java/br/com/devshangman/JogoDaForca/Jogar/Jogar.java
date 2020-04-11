@@ -14,8 +14,6 @@ public class Jogar {
     String palavraOculta;
     String letrasDigitadas;
     String[] letrasDasPlarvas;
-    int letters;
-
 
     public void iniciaJogoDaForca(List<Jogador> jogadores){
         setJogadores(jogadores);
@@ -58,19 +56,21 @@ public class Jogar {
             Scanner scanner = new Scanner(System.in);
             escreverBoneco();
             String letra = scanner.nextLine();
-            validarResposta(letra, palavras);
+            validarResposta(letra);
         }
 
     }
 
-    private void validarResposta(String letra, Palavras palavras){
-        
+    private void validarResposta(String letra){
+
+        int letters = 0;
+
         String[] letrasSeparadas = letra.split("");
 
         //contar a quantidade de letras
         for(int i = 0; i < getPalavra().length(); i++){
             if(Character.isLetter(getPalavra().charAt(i)))
-				letters++;
+                letters++;
         }
         System.out.println("a palavra é: " + getPalavra() + " e a quantidade de letras é: " + letters);
         

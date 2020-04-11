@@ -13,6 +13,8 @@ public class Jogar {
     String palavraOculta;
     String letrasDigitadas;
     String[] letrasDasPlarvas;
+    int letters;
+    
 
     public void iniciaJogoDaForca(List<Jogador> jogadores){
         setJogadores(jogadores);
@@ -22,6 +24,8 @@ public class Jogar {
         boneco.setPartesDoBoneco();
         splitarPalavaParaletrasUnicas(palavras);
         jogoDaForca();
+        
+        
     }
 
     private void splitarPalavaParaletrasUnicas(Palavras palavras){
@@ -58,9 +62,30 @@ public class Jogar {
     }
 
     private void validarResposta(String letra){
-
+        
         String[] letrasSeparadas = letra.split("");
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //contar a quantidade de letras
+        
+        Palavras palavras = new Palavras();
+        palavras.getPalavra();
+        for(int i = 0; i < palavras.getPalavra().length(); i++){ 
+            if(Character.isLetter(palavras.getPalavra().charAt(i)))
+				letters++;
+        }
+        System.out.println("a palavra é:" + palavras.getPalavra() + "e a quantidade de letras é: " + letters);
+        
+        
+        
         for(String letras : letrasSeparadas){
 
             for(String letrasDapalavraGerada : letrasDasPlarvas){

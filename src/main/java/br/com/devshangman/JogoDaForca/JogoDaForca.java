@@ -12,6 +12,7 @@ public class JogoDaForca {
     Audios audios = new Audios();
 
     public void iniciarJogoforca(){
+        //inicinaod som de fundo
         Audios.executaSom("D:\\mario.wav");
         jogoDaForca();
     }
@@ -20,6 +21,7 @@ public class JogoDaForca {
 
         int i = 1;
 
+        //Criar jogadores
         List<Jogador> jogadores = new ArrayList<>();
         Jogador jogador = new Jogador();
 
@@ -28,6 +30,7 @@ public class JogoDaForca {
             System.out.print("Jogador "+i+" : ");
             String nome = scanner.nextLine();
 
+            // tratar jogador
             if(nome.length() > 3){
                 jogadores.add(jogador.CriarJogador(i, nome));
                 i++;
@@ -38,7 +41,6 @@ public class JogoDaForca {
         }
 
         System.out.println("Jogadores: ");
-
         for (Jogador dadosJogador : jogadores) {
             System.out.println("Jogador " + dadosJogador.getId() + ": " + dadosJogador.getNome());
         }
@@ -69,6 +71,7 @@ public class JogoDaForca {
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("Digite uma opção");
+            //Trata  e retorna para digitar a opção
             try{
                 int opcao = scanner.nextInt();
 

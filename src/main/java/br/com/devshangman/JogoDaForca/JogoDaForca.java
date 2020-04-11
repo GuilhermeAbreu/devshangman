@@ -2,6 +2,8 @@ package br.com.devshangman.JogoDaForca;
 
 import br.com.devshangman.JogoDaForca.Audios.Audios;
 import br.com.devshangman.JogoDaForca.Boneco.Boneco;
+import br.com.devshangman.JogoDaForca.GUI.Nomes;
+import br.com.devshangman.JogoDaForca.GUI.TelaLogin;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Jogar.Jogar;
 
@@ -50,6 +52,9 @@ public class JogoDaForca {
     }
 
     public void jogoDaForca(){
+
+        TelaLogin telaLogin = new TelaLogin();
+
         System.out.println("" +
                 "██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\n"+
                 "███                                    _    _          _   _  _____ __  __          _   _                                  ███\n"+

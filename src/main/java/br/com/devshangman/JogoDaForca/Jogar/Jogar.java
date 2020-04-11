@@ -10,22 +10,20 @@ public class Jogar {
 
     List<Jogador> jogadores;
     Boneco boneco = new Boneco();
+    Palavras palavras = new Palavras();
     String palavraOculta;
     String letrasDigitadas;
     String[] letrasDasPlarvas;
     int letters;
-    
+
 
     public void iniciaJogoDaForca(List<Jogador> jogadores){
         setJogadores(jogadores);
-        Palavras palavras = new Palavras();
         palavras.setPalavraComDiga();
         palavras.buscarPalavraComDica();
         boneco.setPartesDoBoneco();
         splitarPalavaParaletrasUnicas(palavras);
-        jogoDaForca();
-        
-        
+        jogoDaForca(palavras);
     }
 
     private void splitarPalavaParaletrasUnicas(Palavras palavras){
@@ -50,39 +48,31 @@ public class Jogar {
         boneco.setTotaldeErros();
     }
 
-    public void jogoDaForca(){
+    public String getPalavra(){
+        return palavras.getPalavra();
+    }
+
+    public void jogoDaForca(Palavras palavras){
 
         while (getErros() < getBoneco().length){
             Scanner scanner = new Scanner(System.in);
             escreverBoneco();
             String letra = scanner.nextLine();
-            validarResposta(letra);
+            validarResposta(letra, palavras);
         }
 
     }
 
-    private void validarResposta(String letra){
+    private void validarResposta(String letra, Palavras palavras){
         
         String[] letrasSeparadas = letra.split("");
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         //contar a quantidade de letras
-        
-        Palavras palavras = new Palavras();
-        palavras.getPalavra();
-        for(int i = 0; i < palavras.getPalavra().length(); i++){ 
-            if(Character.isLetter(palavras.getPalavra().charAt(i)))
+        for(int i = 0; i < getPalavra().length(); i++){
+            if(Character.isLetter(getPalavra().charAt(i)))
 				letters++;
         }
-        System.out.println("a palavra é:" + palavras.getPalavra() + "e a quantidade de letras é: " + letters);
+        System.out.println("a palavra é: " + getPalavra() + " e a quantidade de letras é: " + letters);
         
         
         

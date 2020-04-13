@@ -15,6 +15,10 @@ public class JogoDaForca {
 
     public void iniciarJogoforca(){
         //inicinaod som de fundo
+
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.telaInicial();
+
         Audios.executaSom("D:\\mario.wav");
         jogoDaForca();
     }
@@ -24,7 +28,7 @@ public class JogoDaForca {
         int i = 1;
 
         //Criar jogadores
-        List<Jogador> jogadores = new ArrayList<>();
+        List<Jogador> jogadores = new ArrayList<Jogador>();
         Jogador jogador = new Jogador();
 
         while (i <= opcao){
@@ -53,7 +57,8 @@ public class JogoDaForca {
 
     public void jogoDaForca(){
 
-        TelaLogin telaLogin = new TelaLogin();
+        Thread t = new Thread();
+
 
         System.out.println("" +
                 "██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████\n"+

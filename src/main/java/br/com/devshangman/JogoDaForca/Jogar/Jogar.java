@@ -3,22 +3,29 @@ import br.com.devshangman.JogoDaForca.Boneco.Boneco;
 import br.com.devshangman.JogoDaForca.Console.Console;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Palavras.Palavras;
+
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class Jogar {
 
     List<Jogador> jogadores;
     Boneco boneco = new Boneco();
     Palavras palavras = new Palavras();
-    String palavraOculta;
-    String letrasDigitadas;
+    String palavraOculta = "";
+    String letrasDigitadas = "";
     String[] letrasDasPlarvas;
 
     public void iniciaJogoDaForca(List<Jogador> jogadores){
+        this.letrasDigitadas = "";
+        this.palavraOculta = "";
         setJogadores(jogadores);
         palavras.setPalavraComDiga();
         palavras.buscarPalavraComDica();
+        boneco.reiniciarBoneco();
         boneco.setPartesDoBoneco();
         splitarPalavaParaletrasUnicas(palavras);
         jogoDaForca(palavras);
@@ -27,6 +34,81 @@ public class Jogar {
     private void splitarPalavaParaletrasUnicas(Palavras palavras){
 
         letrasDasPlarvas = palavras.getPalavra().split("");
+
+    }
+
+
+    public void jogoDaForca(Palavras palavras){
+
+        while (getErros() < getBoneco().length - 1){
+            Scanner scanner = new Scanner(System.in);
+            escreverBoneco();
+            System.out.println("Letras digitadas: "+ getLetrasDigitadas());
+            System.out.println("Letras a certadas: "+getPalavraOculta());
+            String letra = scanner.nextLine();
+            validarResposta(letra);
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("deseja continuar? (1) sim ou (2) não:");
+        boolean valido = true;
+        while (valido){
+            try {
+                int opcao = scanner.nextInt();
+
+                if(opcao == 1){
+                    iniciaJogoDaForca(jogadores);
+                    valido = false;
+                }else if(opcao == 2){
+                    exit(-1);
+                    valido = false;
+                }else{
+                    System.out.println("Opção digitada invalida não encontrada");
+                }
+
+            }catch (InputMismatchException e){
+                System.err.println("Opção invalida");
+            }
+        }
+
+    }
+
+    private void validarResposta(String letra){
+
+        int letters = 0;
+
+        String[] letrasSeparadas = letra.split("");
+
+        //contar a quantidade de letras
+        for(int i = 0; i < getPalavra().length(); i++){
+            if(Character.isLetter(getPalavra().charAt(i)))
+                letters++;
+        }
+
+        for(String letras : letrasSeparadas){
+            int possicaoLetra = 0;
+            int count = 0;
+
+            for(String letrasDapalavraGerada : letrasDasPlarvas){
+                if(letras.equals(letrasDapalavraGerada)){
+                    computadarAcerto(letras, possicaoLetra);
+                }else{
+                    count ++;
+                    if(letters == count)
+                    {
+                        setErro();
+                    }
+                }
+                possicaoLetra++;
+            }
+            letrasDigitadas(letras);
+        }
+
+    }
+
+    private void adicionarEspaco(){
+
+        Console console = new Console();
+        console.deletar_conteudo_do_console();
 
     }
 
@@ -50,62 +132,22 @@ public class Jogar {
         return palavras.getPalavra();
     }
 
-    public void jogoDaForca(Palavras palavras){
 
-        while (getErros() < getBoneco().length){
-            Scanner scanner = new Scanner(System.in);
-            escreverBoneco();
-            String letra = scanner.nextLine();
-            validarResposta(letra);
-        }
-
+    public String getPalavraOculta() {
+        return palavraOculta;
     }
 
-    private void validarResposta(String letra){
-
-        int letters = 0;
-        int count = 0;
-
-        String[] letrasSeparadas = letra.split("");
-
-        //contar a quantidade de letras
-        for(int i = 0; i < getPalavra().length(); i++){
-            if(Character.isLetter(getPalavra().charAt(i)))
-                letters++;
-        }
-        System.out.println("a palavra é: " + getPalavra() + " e a quantidade de letras é: " + letters);
-        
-        
-        
-        for(String letras : letrasSeparadas){
-
-            for(String letrasDapalavraGerada : letrasDasPlarvas){
-                    
-                if(letras.equals(letrasDapalavraGerada)){
-                    System.out.println("Letra " + letras + " tem na palavra");
-                }else{
-                    
-                    count ++;
-                    System.out.println("Letra " + letras + " não tem na palavra");
-                    if(letters == count)
-                    {
-                        setErro();
-                    }
-                }
-
-            }
-
-        }
-
+    public String getLetrasDigitadas() {
+        return letrasDigitadas;
     }
 
-    private void adicionarEspaco(){
-
-        Console console = new Console();
-        console.deletar_conteudo_do_console();
-
+    public void computadarAcerto(String letras, int possisao){
+        this.palavraOculta += letras;
     }
 
+    public void letrasDigitadas(String letras){
+        this.letrasDigitadas += letras+",";
+    }
 
     public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;

@@ -5,6 +5,11 @@
  */
 package br.com.devshangman.JogoDaForca.GUI;
 
+import br.com.devshangman.JogoDaForca.Jogador.Jogador;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.fxml.FXMLLoader;
+
 /**
  *
  * @author lgdfj
@@ -16,7 +21,7 @@ public class Nomes extends javax.swing.JFrame {
      */
     public Nomes() {
         initComponents();
-        
+
     }
 
     /**
@@ -29,9 +34,13 @@ public class Nomes extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jogarButton = new javax.swing.JButton();
         textPrimeiroJogador = new javax.swing.JTextField();
         textSegundoJogador = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        voltarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -39,11 +48,21 @@ public class Nomes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("HANGMAN");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setText("Enter");
+        jogarButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jogarButton.setText("Jogar");
+        jogarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jogarButtonActionPerformed(evt);
+            }
+        });
 
         textPrimeiroJogador.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         textPrimeiroJogador.setText("Primeiro Jogador");
+        textPrimeiroJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textPrimeiroJogadorActionPerformed(evt);
+            }
+        });
 
         textSegundoJogador.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         textSegundoJogador.setText("Segundo Jogador");
@@ -53,36 +72,82 @@ public class Nomes extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("Fácil");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("Médio");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setText("Difícil");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
+        voltarButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        voltarButton.setText("Voltar");
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jLabel1)
-                .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGap(57, 57, 57)
+                .addComponent(voltarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jogarButton)
                 .addGap(43, 43, 43))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textSegundoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textPrimeiroJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(158, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textSegundoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jCheckBox1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCheckBox2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jCheckBox3))
+                                .addComponent(textPrimeiroJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox3))
+                .addGap(18, 18, 18)
                 .addComponent(textPrimeiroJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(textSegundoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jogarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -93,10 +158,105 @@ public class Nomes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+    
+    
     private void textSegundoJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSegundoJogadorActionPerformed
-        // TODO add your handling code here:
+
+        //Jogador jogador = new Jogador(1,textSegundoJogador.getText());
+        
+       
     }//GEN-LAST:event_textSegundoJogadorActionPerformed
 
+    private void textPrimeiroJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPrimeiroJogadorActionPerformed
+
+        //Jogador jogador = new Jogador(2,textPrimeiroJogador.getText());
+    }//GEN-LAST:event_textPrimeiroJogadorActionPerformed
+
+   
+    
+    
+    
+    
+    
+    
+    
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+
+        boolean isSelected3 = jCheckBox3.isSelected();
+        
+        if(isSelected3)
+        {
+            jCheckBox1.setSelected(false); 
+            jCheckBox2.setSelected(false); 
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+        boolean isSelected2 = jCheckBox2.isSelected();
+        
+        if(isSelected2)
+        { 
+            jCheckBox1.setSelected(false); 
+            jCheckBox3.setSelected(false); 
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        
+        boolean isSelected1 = jCheckBox1.isSelected();
+        if(isSelected1)
+        {
+            jCheckBox2.setSelected(false); 
+            jCheckBox3.setSelected(false); 
+        }
+
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        // TODO add your handling code here:
+        TelaLogin tela = new TelaLogin();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
+    
+    
+    
+    
+    private void jogarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogarButtonActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        int letras;
+        if(jCheckBox1.isSelected())
+        {
+        letras = 5;
+        }else if(jCheckBox2.isSelected()){
+        letras = 6;
+        }else{
+        letras = 7;
+        }
+        Jogador primeiroJogador = new Jogador(1,textPrimeiroJogador.getText(),letras);
+        Jogador segundoJogador = new Jogador(2,textSegundoJogador.getText(),letras);
+        
+        
+        Escolhas tela = new Escolhas(primeiroJogador, segundoJogador);
+        tela.setVisible(true);
+                dispose();
+        
+    }//GEN-LAST:event_jogarButtonActionPerformed
+
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -134,9 +294,13 @@ public class Nomes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jogarButton;
     private javax.swing.JTextField textPrimeiroJogador;
     public javax.swing.JTextField textSegundoJogador;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

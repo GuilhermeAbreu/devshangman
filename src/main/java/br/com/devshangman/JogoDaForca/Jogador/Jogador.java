@@ -4,16 +4,34 @@ public class Jogador {
 
     int id;
     String nome;
+    int letras;
 
-    public Jogador CriarJogador(int id, String nome) {
+    public Jogador(int id, String nome, int letras) {
 
-        Jogador jogador = new Jogador();
-        jogador.setId(id);
-        jogador.setNome(nome);
-
-        return jogador;
+        //Jogador jogador = new Jogador();
+        //jogador.setId(id);
+        this.id= id;
+        this.nome= nome;
+        this.letras = letras;
+       // jogador.setNome(nome);
+        //return jogador;
+        
     }
-
+    
+    
+    public Jogador(){
+        
+    
+    }
+            
+          
+     public int getLetras() {
+        return letras;
+    }
+    
+    
+    
+    
     public int getId() {
         return id;
     }

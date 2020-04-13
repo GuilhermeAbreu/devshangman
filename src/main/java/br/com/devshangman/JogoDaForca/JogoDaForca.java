@@ -34,7 +34,7 @@ public class JogoDaForca {
 
             // tratar jogador
             if(nome.length() > 3){
-                jogadores.add(jogador.CriarJogador(i, nome));
+                //jogadores.add(jogador.CriarJogador(i, nome));
                 i++;
             }else{
                 System.out.println("Acima de 3 digitos");

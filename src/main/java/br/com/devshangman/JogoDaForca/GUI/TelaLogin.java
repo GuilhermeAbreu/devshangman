@@ -39,6 +39,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         singleplayerButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         singleplayerButton.setText("Singleplayer");
+        singleplayerButton.setEnabled(false);
         singleplayerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 singleplayerButtonActionPerformed(evt);

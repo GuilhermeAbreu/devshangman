@@ -31,13 +31,12 @@ public class Escolhas extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Escolhas(Jogador jogadorUm, Jogador jogadorDois){
+    public Escolhas(List<Jogador> jogadores){
         initComponents();
-        this.jogadorDois = jogadorDois;
-        this.jogadorUm = jogadorUm;
+        this.jogadorDois = jogadores.get(1);
+        this.jogadorUm = jogadores.get(0);
         //informando qual jogador e quantas palavras ele deve colocar
         labelJogadorNome.setText(jogadorUm.getNome() + ", digite a palavra com " + jogadorUm.getLetras() + " letras para o "+ jogadorDois.getNome() + " advinhar");
-
     }
 
     /**

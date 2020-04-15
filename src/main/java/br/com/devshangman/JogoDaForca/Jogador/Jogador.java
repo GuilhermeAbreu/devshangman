@@ -4,34 +4,39 @@ public class Jogador {
 
     int id;
     String nome;
-    int letras;
+    int opcao;
 
-    public Jogador(int id, String nome, int letras) {
+    public Jogador jogador(int id, String nome, int opcao) {
 
-        //Jogador jogador = new Jogador();
-        //jogador.setId(id);
-        this.id= id;
-        this.nome= nome;
-        this.letras = letras;
-       // jogador.setNome(nome);
-        //return jogador;
-        
+        Jogador jogador = new Jogador();
+        jogador.setId(id);
+        jogador.setNome(nome);
+        jogador.setLetras(opcao);
+
+        return jogador;
+
+    }
+
+    public Jogador jogador(int id, String nome) {
+
+        Jogador jogador = new Jogador();
+        jogador.setId(id);
+        jogador.setNome(nome);
+        jogador.setLetras(opcao);
+
+        return jogador;
+
     }
     
     
-    public Jogador(){
-        
-    
+    public Jogador(){}
+
+    public void setLetras(int opcao) { this.opcao = opcao; }
+
+    public int getLetras() {
+        return opcao;
     }
-            
-          
-     public int getLetras() {
-        return letras;
-    }
-    
-    
-    
-    
+
     public int getId() {
         return id;
     }

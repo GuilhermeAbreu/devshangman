@@ -7,15 +7,8 @@ public class PalavrasDois {
     String palavrasDois;
 
     public PalavrasDois(String palavrasUm, String palavrasDois){
-
-        //Jogador jogador = new Jogador();
-        //jogador.setId(id);
         this.palavrasUm= palavrasUm;
         this.palavrasDois= palavrasDois;
-        
-       // jogador.setNome(nome);
-        //return jogador;
-        
     }
     
     

@@ -8,7 +8,11 @@ package br.com.devshangman.JogoDaForca.GUI;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import javafx.fxml.FXMLLoader;
+
+import javax.swing.*;
 
 /**
  *
@@ -192,6 +196,7 @@ public class Nomes extends javax.swing.JFrame {
             jCheckBox1.setSelected(false); 
             jCheckBox2.setSelected(false); 
         }
+
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
@@ -230,33 +235,50 @@ public class Nomes extends javax.swing.JFrame {
     
     private void jogarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogarButtonActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        int letras;
-        if(jCheckBox1.isSelected())
-        {
-        letras = 5;
+
+        if(jCheckBox1.isSelected()){
+            validarNome(5);
         }else if(jCheckBox2.isSelected()){
-        letras = 6;
+            validarNome(6);
+        }else if(jCheckBox3.isSelected()){
+            validarNome(7);
         }else{
-        letras = 7;
+            JOptionPane.showMessageDialog(null,"Marque uma opção");
         }
-        Jogador primeiroJogador = new Jogador(1,textPrimeiroJogador.getText(),letras);
-        Jogador segundoJogador = new Jogador(2,textSegundoJogador.getText(),letras);
-        
-        
-        Escolhas tela = new Escolhas(primeiroJogador, segundoJogador);
-        tela.setVisible(true);
-                dispose();
-        
+
     }//GEN-LAST:event_jogarButtonActionPerformed
 
-    
-    
-    
-    
-    
+
+    public void validarNome(int opcao){
+
+        //Criar jogadores
+        if(!textPrimeiroJogador.getText().equals("Primeiro Jogador") && textPrimeiroJogador.getText() != null && textPrimeiroJogador.getText().length() > 3){
+            if(!textSegundoJogador.getText().equals("Segundo Jogador") && textSegundoJogador.getText() != null && textSegundoJogador.getText().length() > 3){
+                List<Jogador> jogadores = new ArrayList<Jogador>();
+                Jogador jogador = new Jogador();
+                jogadores.add(jogador.jogador(1,textPrimeiroJogador.getText(), opcao));
+                jogadores.add(jogador.jogador(2,textSegundoJogador.getText(), opcao));
+                iniciarTelaParaPegarOsNome(jogadores);
+            }else{
+                janelaAlerta(textSegundoJogador.getText());
+            }
+        }else{
+            janelaAlerta(textPrimeiroJogador.getText());
+        }
+
+    }
+
+    public void janelaAlerta(String nome){
+        JOptionPane.showMessageDialog(null,"Nome: ("+nome+") \nNão segue o padrão esperado \n \t Maior que três caracter\n \t não pode ser nulo ou vazio \n \t");
+    }
+
+    public void iniciarTelaParaPegarOsNome(List<Jogador> jogadores){
+        Escolhas tela = new Escolhas(jogadores);
+        tela.setVisible(true);
+        dispose();
+    }
+
+
     /**
      * @param args the command line arguments
      */

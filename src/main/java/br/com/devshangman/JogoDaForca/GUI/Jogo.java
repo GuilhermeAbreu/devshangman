@@ -5,14 +5,7 @@
  */
 package br.com.devshangman.JogoDaForca.GUI;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
-import br.com.devshangman.JogoDaForca.Palavras.Palavras;
 import br.com.devshangman.JogoDaForca.Palavras.PalavrasDois;
- import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-import java.awt.*;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
@@ -27,12 +20,11 @@ public class Jogo extends javax.swing.JFrame {
     PalavrasDois palavraJogadorUm = null;
     PalavrasDois palavraJogadorDois = null;
     String asString;
-    //String letra1,letra2,letra3,letra4,letra5,letra6,letra7;
     int acertos;
     int errou;
     int erro;
     char tentativa,primeiro,segundo,terceiro,quarto,quinto,sexto,setimo;
-    int letters =0;
+    int letters = 0;
     boolean vezJogador = false;
     String texto;
     
@@ -103,8 +95,6 @@ public class Jogo extends javax.swing.JFrame {
             quinto = texto.charAt(4);
             sexto = texto.charAt(5);
             setimo = texto.charAt(6);
-
-
         }
         
         
@@ -121,11 +111,7 @@ public class Jogo extends javax.swing.JFrame {
         this.jogadorUm = jogadorUm;
         this.palavraJogadorUm = palavraJogadorUm;
         this.palavraJogadorDois = palavraJogadorDois;
-        
-        
-        
-        
-        
+
         System.out.println("Entrei Jogo");
         
         System.out.println("Entrei Atualizar");
@@ -552,9 +538,7 @@ public class Jogo extends javax.swing.JFrame {
                 Atualizar();
                 JOptionPane.showMessageDialog(null,"Não foi dessa vez, mas na próxima quem sabe.. ","Quasee ",JOptionPane.INFORMATION_MESSAGE);
                 //chamar vez jogador 2
-                
-                
-                
+
                 }
                 errou = 0;
             }

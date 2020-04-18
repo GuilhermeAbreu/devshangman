@@ -19,13 +19,11 @@ public class Jogo extends javax.swing.JFrame {
     Jogador jogadorDois = null;
     PalavrasDois palavraJogadorUm = null;
     PalavrasDois palavraJogadorDois = null;
-    String asString;
     int acertos;
     int errou;
     int erro;
     char tentativa,primeiro,segundo,terceiro,quarto,quinto,sexto,setimo;
     int letters = 0;
-    boolean vezJogador = false;
     String texto;
     
     
@@ -39,6 +37,8 @@ public class Jogo extends javax.swing.JFrame {
         initComponents();
         
     }
+
+
     public void Atualizar()
     {
         letters = jogadorUm.getLetras();
@@ -121,20 +121,19 @@ public class Jogo extends javax.swing.JFrame {
         texto = palavraJogadorDois.getPalavrasDois();
         hack.setText(palavraJogadorDois.getPalavrasDois());
         System.out.println("Sai atualizar");
-        
-        if(letters == 5){
-                char[] letras = texto.toCharArray();
+        char[] letras = texto.toCharArray();
+
+        switch (letters){
+            case 5:
                 primeiro = texto.charAt(0);
                 segundo = texto.charAt(1);
                 terceiro = texto.charAt(2);
                 quarto = texto.charAt(3);
                 quinto = texto.charAt(4);
-
-                letraSeis.setVisible(false);  
-                letraSete.setVisible(false);  
-            }
-            if(letters == 6){
-                char[] letras = texto.toCharArray();
+                letraSeis.setVisible(false);
+                letraSete.setVisible(false);
+                break;
+            case 6:
                 primeiro = texto.charAt(0);
                 segundo = texto.charAt(1);
                 terceiro = texto.charAt(2);
@@ -143,10 +142,9 @@ public class Jogo extends javax.swing.JFrame {
                 sexto = texto.charAt(5);
 
 
-                letraSete.setVisible(false);  
-            }
-            if(letters == 7){
-                char[] letras = texto.toCharArray();
+                letraSete.setVisible(false);
+                break;
+            case 7:
                 primeiro = texto.charAt(0);
                 segundo = texto.charAt(1);
                 terceiro = texto.charAt(2);
@@ -154,43 +152,10 @@ public class Jogo extends javax.swing.JFrame {
                 quinto = texto.charAt(4);
                 sexto = texto.charAt(5);
                 setimo = texto.charAt(6);
-
-
-            }
-        
-        
-        
-        /*
-        letters =0;
-         for(int i = 0; i < palavraJogadorUm.getPalavrasUm().length(); i++){
-            if(Character.isLetter(palavraJogadorUm.getPalavrasUm().charAt(i)))
-                letters++;
+                break;
+            default:
+                break;
         }
-        */
-        
-        
-         
-        
-        
-        
-        /*
-        letra1 = Character.toString(primeiro);
-        letra2 = Character.toString(segundo);
-        letra3 = Character.toString(terceiro);
-        letra4 = Character.toString(quarto);
-        letra5 = Character.toString(quinto);
-        */
-        
-        
-        
-         
-        
-        
-        
-        
-        
-        
-
 
     }
     
@@ -427,12 +392,9 @@ public class Jogo extends javax.swing.JFrame {
         }
         
        //condição vitoria
-        if(acertos == letters)
-        {
-         JOptionPane.showMessageDialog(null,"Parabéns, você conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
+        if(acertos == letters){ JOptionPane.showMessageDialog(null,"Parabéns, você conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
         System.out.println("parabéns");
 
-        
         ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
         icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
         imagemForca.setIcon(icon);

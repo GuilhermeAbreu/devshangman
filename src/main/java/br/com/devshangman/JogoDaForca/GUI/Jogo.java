@@ -24,7 +24,7 @@ public class Jogo extends javax.swing.JFrame {
     int errou;
     int erro;
     char tentativa,primeiro,segundo,terceiro,quarto,quinto,sexto,setimo;
-    int letters = 0;
+    int qtdLetras = 0;
     boolean vezJogador = false;
     String texto;
     
@@ -41,7 +41,7 @@ public class Jogo extends javax.swing.JFrame {
     }
     public void Atualizar()
     {
-        letters = jogadorUm.getLetras();
+        qtdLetras = jogadorUm.getLetras();
         texto = palavraJogadorUm.getPalavrasUm();
         titulo.setText("Vez de " + jogadorDois.getNome() + " jogar" );
         letraUm.setText("__");
@@ -49,9 +49,9 @@ public class Jogo extends javax.swing.JFrame {
         letraTres.setText("__");
         letraQuatro.setText("__");
         letraCinco.setText("__");
-        if(letters >= 6){
+        if(qtdLetras >= 6){
             letraSeis.setText("__");
-                if(letters == 7){
+                if(qtdLetras == 7){
                     letraSete.setText("__");
                 }
         }
@@ -61,9 +61,9 @@ public class Jogo extends javax.swing.JFrame {
         errou = 0;
         textoTentativaa.setText(" ");
 
-        hack.setText(palavraJogadorUm.getPalavrasUm());
+        //hack.setText(palavraJogadorUm.getPalavrasUm());
 
-            if(letters == 5){
+            if(qtdLetras == 5){
             char[] letras = texto.toCharArray();
             primeiro = texto.charAt(0);
             segundo = texto.charAt(1);
@@ -74,7 +74,7 @@ public class Jogo extends javax.swing.JFrame {
             letraSeis.setVisible(false);  
             letraSete.setVisible(false);  
         }
-        if(letters == 6){
+        if(qtdLetras == 6){
             char[] letras = texto.toCharArray();
             primeiro = texto.charAt(0);
             segundo = texto.charAt(1);
@@ -86,7 +86,7 @@ public class Jogo extends javax.swing.JFrame {
 
             letraSete.setVisible(false);  
         }
-        if(letters == 7){
+        if(qtdLetras == 7){
             char[] letras = texto.toCharArray();
             primeiro = texto.charAt(0);
             segundo = texto.charAt(1);
@@ -112,17 +112,18 @@ public class Jogo extends javax.swing.JFrame {
         this.palavraJogadorUm = palavraJogadorUm;
         this.palavraJogadorDois = palavraJogadorDois;
 
-        System.out.println("Entrei Jogo");
-        
-        System.out.println("Entrei Atualizar");
+        //mudando o t�tulo
         titulo.setText("Vez de " + jogadorUm.getNome() + " jogar" );
 
-        letters = jogadorDois.getLetras();
+        
+        qtdLetras = jogadorDois.getLetras();
+        
+        
         texto = palavraJogadorDois.getPalavrasDois();
-        hack.setText(palavraJogadorDois.getPalavrasDois());
+        //hack.setText(palavraJogadorDois.getPalavrasDois());
         System.out.println("Sai atualizar");
         
-        if(letters == 5){
+        if(qtdLetras == 5){
                 char[] letras = texto.toCharArray();
                 primeiro = texto.charAt(0);
                 segundo = texto.charAt(1);
@@ -133,7 +134,7 @@ public class Jogo extends javax.swing.JFrame {
                 letraSeis.setVisible(false);  
                 letraSete.setVisible(false);  
             }
-            if(letters == 6){
+            if(qtdLetras == 6){
                 char[] letras = texto.toCharArray();
                 primeiro = texto.charAt(0);
                 segundo = texto.charAt(1);
@@ -145,7 +146,7 @@ public class Jogo extends javax.swing.JFrame {
 
                 letraSete.setVisible(false);  
             }
-            if(letters == 7){
+            if(qtdLetras == 7){
                 char[] letras = texto.toCharArray();
                 primeiro = texto.charAt(0);
                 segundo = texto.charAt(1);
@@ -157,36 +158,6 @@ public class Jogo extends javax.swing.JFrame {
 
 
             }
-        
-        
-        
-        /*
-        letters =0;
-         for(int i = 0; i < palavraJogadorUm.getPalavrasUm().length(); i++){
-            if(Character.isLetter(palavraJogadorUm.getPalavrasUm().charAt(i)))
-                letters++;
-        }
-        */
-        
-        
-         
-        
-        
-        
-        /*
-        letra1 = Character.toString(primeiro);
-        letra2 = Character.toString(segundo);
-        letra3 = Character.toString(terceiro);
-        letra4 = Character.toString(quarto);
-        letra5 = Character.toString(quinto);
-        */
-        
-        
-        
-         
-        
-        
-        
         
         
         
@@ -295,47 +266,52 @@ public class Jogo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(382, 382, 382))
+                        .addGap(420, 420, 420))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(quantidadeErros, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(letraUm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(letraDois)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(letraTres)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(letraQuatro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(letraCinco)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(letraSeis)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(letraSete))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(hack)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(tentar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textoTentativaa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(imagemForca, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38))
+                                        .addComponent(letraUm)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(letraDois)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(letraTres)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(letraQuatro)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(letraCinco)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(letraSeis)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(letraSete))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(hack)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(tentar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textoTentativaa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(35, 35, 35)
+                                .addComponent(imagemForca, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(67, 108, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(titulo)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(imagemForca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addGap(18, 18, 18)
                         .addComponent(quantidadeErros)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -352,12 +328,11 @@ public class Jogo extends javax.swing.JFrame {
                                     .addComponent(textoTentativaa, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(49, 49, 49)
                                 .addComponent(hack))
-                            .addComponent(tentar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(imagemForca, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
-                .addGap(36, 36, 36))
+                            .addComponent(tentar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36))))
         );
 
-        setSize(new java.awt.Dimension(613, 411));
+        setSize(new java.awt.Dimension(714, 438));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
   
@@ -366,12 +341,7 @@ public class Jogo extends javax.swing.JFrame {
    
 
     private void tentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tentarActionPerformed
-        // TODO add your handling code here:
-        //if(textoTentativa.getText());{
-        //ImageIcon icone = new ImageIcon("imagem.jpg");
-        //JLabel label = new JLabel(icone);
- 
-        
+
         errou = 0;
         tentativa = textoTentativaa.getText().charAt(0);
         
@@ -407,14 +377,14 @@ public class Jogo extends javax.swing.JFrame {
                 letraCinco.setText(Character.toString(quinto));
                 acertos++;
             }
-        if(letters >= 6){
+        if(qtdLetras >= 6){
             if (sexto == tentativa)
                 {
                     System.out.println("você acertou");
                     letraSeis.setText(Character.toString(sexto));
                     acertos++;
                 }
-            if(letters == 7){
+            if(qtdLetras == 7){
                  if (setimo == tentativa)
             {
                 System.out.println("você acertou");
@@ -422,12 +392,9 @@ public class Jogo extends javax.swing.JFrame {
                 acertos++;
             }
             }
-            
-        
         }
-        
        //condição vitoria
-        if(acertos == letters)
+        if(acertos == qtdLetras)
         {
          JOptionPane.showMessageDialog(null,"Parabéns, você conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
         System.out.println("parabéns");
@@ -441,11 +408,9 @@ public class Jogo extends javax.swing.JFrame {
         quantidadeErros.setText("Erros: " + Integer.toString(erro));
         Atualizar();
         System.out.println("resetei");
-        
+
         
         //chamar vez jogador 2
-        
-        
         }
             
             
@@ -475,13 +440,13 @@ public class Jogo extends javax.swing.JFrame {
                 System.out.println("você errou 5");
                                 errou++;
             }
-            if(letters >= 6){
+            if(qtdLetras >= 6){
                 if (tentativa != sexto)
                 {
                     System.out.println("você errou 6");
                                     errou++;
                 }
-                if(letters == 7){
+                if(qtdLetras == 7){
                     if (tentativa != setimo)
                 {
                     System.out.println("você errou 7");
@@ -491,7 +456,7 @@ public class Jogo extends javax.swing.JFrame {
             }
             
             
-            if(errou == letters){
+            if(errou == qtdLetras){
                 
                 erro+=1;
                 quantidadeErros.setText("Erros: " + Integer.toString(erro));

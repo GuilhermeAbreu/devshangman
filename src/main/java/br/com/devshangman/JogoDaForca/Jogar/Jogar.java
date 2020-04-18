@@ -74,14 +74,14 @@ public class Jogar {
 
     private void validarResposta(String letra){
 
-        int letters = 0;
+        int qtdLetras = 0;
 
         String[] letrasSeparadas = letra.split("");
 
         //contar a quantidade de letras
         for(int i = 0; i < getPalavra().length(); i++){
             if(Character.isLetter(getPalavra().charAt(i)))
-                letters++;
+                qtdLetras++;
         }
 
         for(String letras : letrasSeparadas){
@@ -93,7 +93,7 @@ public class Jogar {
                     computadarAcerto(letras, possicaoLetra);
                 }else{
                     count ++;
-                    if(letters == count)
+                    if(qtdLetras == count)
                     {
                         setErro();
                     }

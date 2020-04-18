@@ -9,11 +9,13 @@ import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Palavras.Palavras;
 import br.com.devshangman.JogoDaForca.Palavras.PalavrasDois;
 
+
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXMLLoader;
-
+import java.lang.*;
 /**
  *
  * @author lgdfj
@@ -55,7 +57,7 @@ public class Escolhas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         textPalavra2 = new javax.swing.JTextField();
-        qtdLetras = new javax.swing.JLabel();
+        mensagemLetras = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -98,8 +100,8 @@ public class Escolhas extends javax.swing.JFrame {
             }
         });
 
-        qtdLetras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        qtdLetras.setText(" Lembre-se do número de letras    ");
+        mensagemLetras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mensagemLetras.setText(" Lembre-se do n�mero de letras    ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,7 +128,7 @@ public class Escolhas extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(161, 161, 161)
-                .addComponent(qtdLetras)
+                .addComponent(mensagemLetras)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,7 +137,7 @@ public class Escolhas extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(labelJogadorNome, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addGap(15, 15, 15)
-                .addComponent(qtdLetras)
+                .addComponent(mensagemLetras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textPalavra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,28 +167,28 @@ public class Escolhas extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         //fazendo a contagem para verificar quantas letras o usuário digitou no campo 1
-        int letters =0;
+        int qtdLetras =0;
          for(int i = 0; i < textPalavra1.getText().length(); i++){
             if(Character.isLetter(textPalavra1.getText().charAt(i)))
-                letters++;
+                qtdLetras++;
         }
          //verificando quantas letras o jgoador digitou no campo1
-         if(letters == jogadorUm.getLetras())
+         if(qtdLetras == jogadorUm.getLetras())
          {
-             qtdLetras.setText(" Lembre-se do número de letras");
-             qtdLetras.setForeground(Color.BLACK);
-             letters = 0;
+             mensagemLetras.setText(" Lembre-se do número de letras");
+             mensagemLetras.setForeground(Color.BLACK);
+             qtdLetras = 0;
           textPalavra2.setEnabled(true);
             //só vai entrar aqui quando ele clicar em enviar 2x para o segundo jogador colocar a sua palavra
             if(Enviei){
                 //fazendo a contagem para verificar quantas letras o usuário digitou no campo 2
-                letters =0;
+                qtdLetras =0;
                 for(int i = 0; i < textPalavra2.getText().length(); i++){
                     if(Character.isLetter(textPalavra2.getText().charAt(i)))
-                    letters++;
+                    qtdLetras++;
                 }
                 //verificando quantas letras o jogador digitou no campo 2
-                if(letters == jogadorUm.getLetras())
+                if(qtdLetras == jogadorUm.getLetras())
                 {
                     PalavrasDois textoUm = new PalavrasDois(textPalavra1.getText(),textPalavra2.getText());
                     PalavrasDois textoDois = new PalavrasDois(textPalavra1.getText(),textPalavra2.getText());
@@ -196,9 +198,9 @@ public class Escolhas extends javax.swing.JFrame {
                     dispose();
                 }else{
                     //se ele digitar a quantidade errada de letras informamos em vermelho e ele não prossegue com o jogo
-                    qtdLetras.setText("Digite a quantidade de letras corretas");
-                    qtdLetras.setForeground(Color.red);
-                    letters = 0;
+                    mensagemLetras.setText("Digite a quantidade de letras corretas");
+                    mensagemLetras.setForeground(Color.red);
+                    qtdLetras = 0;
                 }
             }
             //informando o jogador quem e a quantidade de letras que o jogador deve preencher 
@@ -209,9 +211,9 @@ public class Escolhas extends javax.swing.JFrame {
          }
          else{
              //se ele digitar a quantidade errada de letras informamos em vermelho e ele não prossegue com o jogo
-             qtdLetras.setText("Digite a quantidade de letras corretas");
-             qtdLetras.setForeground(Color.red);
-             letters = 0;
+             mensagemLetras.setText("Digite a quantidade de letras corretas");
+             mensagemLetras.setForeground(Color.red);
+             qtdLetras = 0;
              //System.out.println("Digite a quantidade de letras corretas");
          }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -275,7 +277,7 @@ public class Escolhas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelJogadorNome;
-    private javax.swing.JLabel qtdLetras;
+    private javax.swing.JLabel mensagemLetras;
     private javax.swing.JTextField textPalavra1;
     private javax.swing.JTextField textPalavra2;
     // End of variables declaration//GEN-END:variables

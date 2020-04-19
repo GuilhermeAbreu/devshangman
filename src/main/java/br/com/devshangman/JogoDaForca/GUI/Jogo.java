@@ -6,6 +6,7 @@
 package br.com.devshangman.JogoDaForca.GUI;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Palavras.PalavrasDois;
+import static java.lang.System.exit;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 
@@ -25,6 +26,11 @@ public class Jogo extends javax.swing.JFrame {
     char tentativa,primeiro,segundo,terceiro,quarto,quinto,sexto,setimo;
     int letters = 0;
     String texto;
+    
+    
+    boolean acertouJogadorUm;
+    boolean acertouJogadorDois;
+    boolean terminou;
 
 
 
@@ -57,7 +63,7 @@ public class Jogo extends javax.swing.JFrame {
         }
 
         acertos =0;
-        erro = 0;
+        erro -= 1;
         errou = 0;
         textoTentativaa.setText(" ");
 
@@ -101,6 +107,7 @@ public class Jogo extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
         icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
         imagemForca.setIcon(icon);
+        terminou = true;
 
 
     }
@@ -392,22 +399,38 @@ public class Jogo extends javax.swing.JFrame {
         }
 
        //condição vitoria
-        if(acertos == letters){ JOptionPane.showMessageDialog(null,"Parabéns, você conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
-        System.out.println("parabéns");
-
-        ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
-        icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
-        imagemForca.setIcon(icon);
-        errou =0;
-        erro = 0;
-        quantidadeErros.setText("Erros: " + Integer.toString(erro));
-        Atualizar();
-        System.out.println("resetei");
-
-
-        //chamar vez jogador 2
-
-
+        if(acertos == letters){ 
+            if(terminou){
+                acertouJogadorDois = true;
+                    if(acertouJogadorUm && acertouJogadorDois){
+                        JOptionPane.showMessageDialog(null,"Empate","Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                        exit(-1);
+                    }
+                    else if(acertouJogadorUm){
+                        JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorUm.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                        exit(-1);
+                    }
+                    else if(acertouJogadorDois){
+                        JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorDois.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                        exit(-1);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Nenhum acertou" ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                        exit(-1);
+                    }
+                JOptionPane.showMessageDialog(null,"Terminou o jogo ","Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+            }else{
+            
+             JOptionPane.showMessageDialog(null,"Parab�ns, voc� conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
+             acertouJogadorUm = true;
+            ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
+            icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
+            imagemForca.setIcon(icon);
+            errou =0;
+            erro = 0;
+            quantidadeErros.setText("Erros: " + Integer.toString(erro));
+            Atualizar();
+            System.out.println("resetei");
+            }
         }
 
 
@@ -451,8 +474,7 @@ public class Jogo extends javax.swing.JFrame {
                 }
                 }
             }
-
-
+            
             if(errou == letters){
                 
                 erro+=1;
@@ -489,18 +511,38 @@ public class Jogo extends javax.swing.JFrame {
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
                 
-                
-                
-                icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
-                icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
-                imagemForca.setIcon(icon);
-                errou =0;
-                erro = 0;
-                acertos =0;
-                Atualizar();
-                JOptionPane.showMessageDialog(null,"Não foi dessa vez, mas na próxima quem sabe.. ","Quasee ",JOptionPane.INFORMATION_MESSAGE);
-                //chamar vez jogador 2
+                            if(terminou){
 
+                                if(acertouJogadorUm && acertouJogadorDois){
+                                    JOptionPane.showMessageDialog(null,"Empate","Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                                    exit(-1);
+                                }
+                                else if(acertouJogadorUm){
+                                    JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorUm.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                                    exit(-1);
+                                }
+                                else if(acertouJogadorDois){
+                                    JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorDois.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                                    exit(-1);
+                                }else{
+                                    JOptionPane.showMessageDialog(null,"Nenhum acertou" ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
+                                    exit(-1);
+                                }
+
+                            }else{
+                                icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
+                                icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
+                                imagemForca.setIcon(icon);
+                                errou =0;
+                                erro = 0;
+                                acertos =0;
+                                Atualizar();
+                                JOptionPane.showMessageDialog(null,"Não foi dessa vez, mas na próxima quem sabe.. ","Quasee ",JOptionPane.INFORMATION_MESSAGE);
+                            //chamar vez jogador 2
+
+
+                            }
+                
                 }
                 errou = 0;
             }

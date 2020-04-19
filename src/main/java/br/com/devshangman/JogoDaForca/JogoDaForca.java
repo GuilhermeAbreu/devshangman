@@ -15,7 +15,7 @@ public class JogoDaForca {
 
     public void iniciarJogoforca(){
         //inicinaod som de fundo
-        Audios.executaSom("D:\\mario.wav");
+        Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\fundo.wav");
         TelaLogin telaLogin = new TelaLogin();
         telaLogin.telaInicial();
     }

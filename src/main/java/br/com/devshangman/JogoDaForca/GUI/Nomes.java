@@ -179,14 +179,6 @@ public class Nomes extends javax.swing.JFrame {
         //Jogador jogador = new Jogador(2,textPrimeiroJogador.getText());
     }//GEN-LAST:event_textPrimeiroJogadorActionPerformed
 
-   
-    
-    
-    
-    
-    
-    
-    
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
 
         boolean isSelected3 = jCheckBox3.isSelected();

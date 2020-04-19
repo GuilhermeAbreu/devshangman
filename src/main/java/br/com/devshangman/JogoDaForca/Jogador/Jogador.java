@@ -8,6 +8,8 @@ public class Jogador {
 
     public Jogador jogador(int id, String nome, int opcao) {
 
+        System.out.println("novo jogador nome: " + nome +" id: "+id);
+
         Jogador jogador = new Jogador();
         jogador.setId(id);
         jogador.setNome(nome);
@@ -18,6 +20,8 @@ public class Jogador {
     }
 
     public Jogador jogador(int id, String nome) {
+
+        System.out.println("novo jogador nome: " + nome +" id: "+id);
 
         Jogador jogador = new Jogador();
         jogador.setId(id);

@@ -259,12 +259,7 @@ public class Escolhas extends javax.swing.JFrame {
             public void run() {
                 
                 new Escolhas().setVisible(true);
-                
-                
-                
-                
-                
-            
+
             }
             
         });

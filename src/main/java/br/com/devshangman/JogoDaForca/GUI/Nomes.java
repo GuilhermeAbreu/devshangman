@@ -5,13 +5,10 @@
  */
 package br.com.devshangman.JogoDaForca.GUI;
 
+import br.com.devshangman.JogoDaForca.Audios.Audios;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import javafx.fxml.FXMLLoader;
-
 import javax.swing.*;
 
 /**
@@ -20,12 +17,12 @@ import javax.swing.*;
  */
 public class Nomes extends javax.swing.JFrame {
 
+
     /**
      * Creates new form TelaLogin
      */
     public Nomes() {
         initComponents();
-
     }
 
     /**
@@ -235,6 +232,8 @@ public class Nomes extends javax.swing.JFrame {
         }else if(jCheckBox3.isSelected()){
             validarNome(7);
         }else{
+            Audios audios = new Audios();
+            Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\alert.wav", false);
             JOptionPane.showMessageDialog(null,"Marque uma opção");
         }
 
@@ -261,6 +260,8 @@ public class Nomes extends javax.swing.JFrame {
     }
 
     public void janelaAlerta(String nome){
+        Audios audios = new Audios();
+        Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\alert.wav", false);
         JOptionPane.showMessageDialog(null,"Nome: ("+nome+") \nNão segue o padrão esperado \n \t Maior que três caracter\n \t não pode ser nulo ou vazio \n \t");
     }
 

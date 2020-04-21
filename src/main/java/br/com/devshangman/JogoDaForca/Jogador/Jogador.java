@@ -5,7 +5,6 @@ public class Jogador {
     int id;
     String nome;
     int opcao;
-    String dica;
 
     public Jogador jogador(int id, String nome, int opcao) {
 
@@ -35,10 +34,6 @@ public class Jogador {
     
     
     public Jogador(){}
-
-    public void setDica(String dica) {this.dica = dica;}
-
-    public String getDica() {return dica;}
 
     public void setLetras(int opcao) { this.opcao = opcao; }
 

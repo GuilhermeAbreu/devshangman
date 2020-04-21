@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.com.devshangman.JogoDaForca.GUI;
+import br.com.devshangman.JogoDaForca.Audios.Audios;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Palavras.PalavrasDois;
 import static java.lang.System.exit;
@@ -29,7 +30,7 @@ public class Jogo extends javax.swing.JFrame {
     char tentativa,primeiro,segundo,terceiro,quarto,quinto,sexto,setimo;
     int letters = 0;
     String texto;
-
+    Audios audios = new Audios();
     boolean acertouJogadorUm;
     boolean acertouJogadorDois;
     boolean terminou;
@@ -379,12 +380,14 @@ public class Jogo extends javax.swing.JFrame {
         System.out.println("tentativa :"+ tentativa + ":" + primeiro + ":" +  segundo  +" " +  terceiro +" " + quarto +" " + quinto);
          if (primeiro == tentativa)
             {
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                 System.out.println("você acertou");
                 letraUm.setText(Character.toString(primeiro));
                 acertos++;
             }
         if(segundo == tentativa)
             {
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                 System.out.println("você acertou");
                 letraDois.setText(Character.toString(segundo));
                 acertos++;
@@ -392,18 +395,21 @@ public class Jogo extends javax.swing.JFrame {
             }
         if (terceiro == tentativa)
             {
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                 System.out.println("você acertou");
                 letraTres.setText(Character.toString(terceiro));
                 acertos++;
             }
         if (quarto == tentativa)
             {
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                 System.out.println("você acertou");
                 letraQuatro.setText(Character.toString(quarto));
                 acertos++;
             }
         if (quinto == tentativa)
             {
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                 System.out.println("você acertou");
                 letraCinco.setText(Character.toString(quinto));
                 acertos++;
@@ -411,6 +417,7 @@ public class Jogo extends javax.swing.JFrame {
         if(letters >= 6){
             if (sexto == tentativa)
                 {
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                     System.out.println("você acertou");
                     letraSeis.setText(Character.toString(sexto));
                     acertos++;
@@ -418,6 +425,7 @@ public class Jogo extends javax.swing.JFrame {
             if(letters == 7){
                  if (setimo == tentativa)
             {
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                 System.out.println("você acertou");
                 letraSete.setText(Character.toString(setimo));
                 acertos++;
@@ -437,26 +445,31 @@ public class Jogo extends javax.swing.JFrame {
                     jogadorList.add(jogadorDois);
 
                     if(acertouJogadorUm && acertouJogadorDois){
+                        Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\loser.wav", false);
                         JOptionPane.showMessageDialog(null,"Empate","Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
                         nomes.iniciarTelaParaPegarOsNome(jogadorList);
                         dispose();
                     }
                     else if(acertouJogadorUm){
+                        Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                         JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorUm.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
                         nomes.iniciarTelaParaPegarOsNome(jogadorList);
                         dispose();
                     }
                     else if(acertouJogadorDois){
+                        Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                         JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorDois.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
                         nomes.iniciarTelaParaPegarOsNome(jogadorList);
                         dispose();
                     }else{
+                        Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
                         JOptionPane.showMessageDialog(null,"Nenhum acertou" ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
                         nomes.iniciarTelaParaPegarOsNome(jogadorList);
                         dispose();
                     }
             }else{
-             JOptionPane.showMessageDialog(null,"Parab�ns, voc� conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
+                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
+                JOptionPane.showMessageDialog(null,"Parab�ns, voc� conseguiu ","Uhull",JOptionPane.INFORMATION_MESSAGE);
              acertouJogadorUm = true;
             ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
             icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
@@ -485,22 +498,26 @@ public class Jogo extends javax.swing.JFrame {
             }
             if (tentativa != terceiro)
             {
+
                 System.out.println("você errou 3");
                                 errou++;
             }
             if (tentativa != quarto)
             {
+
                 System.out.println("você errou 4");
                                 errou++;
             }
             if (tentativa != quinto)
             {
+
                 System.out.println("você errou 5");
                                 errou++;
             }
             if(letters >= 6){
                 if (tentativa != sexto)
                 {
+
                     System.out.println("você errou 6");
                                     errou++;
                 }
@@ -518,57 +535,80 @@ public class Jogo extends javax.swing.JFrame {
                 erro+=1;
                 quantidadeErros.setText("Erros: " + Integer.toString(erro));
                 if(erro ==1){
-                    
-                ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows1.jpg");
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
+                    ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows1.jpg");
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
                 }
                 if(erro ==2){
-                ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows2.jpg");
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
+
+                    ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows2.jpg");
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
                 }
                 if(erro ==3){
-                ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows3.jpg");
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
+
+                    ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows3.jpg");
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
                 }
                 if(erro ==4){
-                ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows4.jpg");
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
+
+                    ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows4.jpg");
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
                 }
                 if(erro ==5){
-                ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows5.jpg");
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
+
+                    ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows5.jpg");
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
                 }
                 //condição derrota
                 if(erro >=6){
-                ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows6.jpg");
+                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
+
+                    ImageIcon icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows6.jpg");
                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                 imagemForca.setIcon(icon);
-                
                             if(terminou){
+                                acertouJogadorDois = true;
+                                List<Jogador> jogadorList = new ArrayList<Jogador>();
+                                Nomes nomes = new Nomes();
+                                jogadorList.add(jogadorUm);
+                                jogadorList.add(jogadorDois);
 
                                 if(acertouJogadorUm && acertouJogadorDois){
+                                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\loser.wav", false);
                                     JOptionPane.showMessageDialog(null,"Empate","Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
-                                    exit(-1);
+                                    nomes.iniciarTelaParaPegarOsNome(jogadorList);
+                                    dispose();
                                 }
                                 else if(acertouJogadorUm){
+                                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                                     JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorUm.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
-                                    exit(-1);
+                                    nomes.iniciarTelaParaPegarOsNome(jogadorList);
+                                    dispose();
                                 }
                                 else if(acertouJogadorDois){
+                                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\win.wav", false);
                                     JOptionPane.showMessageDialog(null,"Jogador vencedor: " + jogadorDois.getNome() ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
-                                    exit(-1);
+                                    nomes.iniciarTelaParaPegarOsNome(jogadorList);
+                                    dispose();
                                 }else{
+                                    Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
                                     JOptionPane.showMessageDialog(null,"Nenhum acertou" ,"Terminou o jogo",JOptionPane.INFORMATION_MESSAGE);
-                                    exit(-1);
+                                    nomes.iniciarTelaParaPegarOsNome(jogadorList);
+                                    dispose();
                                 }
                                 textoTentativaa.setText("");
                                 jLabel5.setText("Nenhuma Letra digitada");
                             }else{
+                                Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\louse.wav", false);
                                 icon = new ImageIcon("src/main/java/br/com/devshangman/JogoDaForca/Boneco/gallows.jpg");
                                 icon.setImage(icon.getImage().getScaledInstance(imagemForca.getWidth(),imagemForca.getHeight(),1));
                                 imagemForca.setIcon(icon);
@@ -579,7 +619,6 @@ public class Jogo extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null,"Não foi dessa vez, mas na próxima quem sabe.. ","Quasee ",JOptionPane.INFORMATION_MESSAGE);
                             //chamar vez jogador 2
                             }
-                
                 }
                 errou = 0;
             }

@@ -4,12 +4,9 @@
  * and open the template in the editor.
  */
 package br.com.devshangman.JogoDaForca.GUI;
-
+import br.com.devshangman.JogoDaForca.Audios.Audios;
 import br.com.devshangman.JogoDaForca.Jogador.Jogador;
 import br.com.devshangman.JogoDaForca.Palavras.PalavrasDois;
-
-
-
 import java.awt.Color;
 import java.util.List;
 import java.lang.*;
@@ -18,12 +15,14 @@ import java.lang.*;
  * @author lgdfj
  */
 public class Escolhas extends javax.swing.JFrame {
+
     /**
      * Creates new form Escolhas
      */
     Jogador jogadorUm = null;
     Jogador jogadorDois = null;
     boolean Enviei = false;
+    Audios audios = new Audios();
 
     public Escolhas() {
         initComponents();
@@ -35,7 +34,6 @@ public class Escolhas extends javax.swing.JFrame {
         this.jogadorUm = jogadores.get(0);
         //informando qual jogador e quantas palavras ele deve colocar
         labelJogadorNome.setText(jogadorUm.getNome() + ", digite a palavra com " + jogadorUm.getLetras() + " letras para o "+ jogadorDois.getNome() + " advinhar");
-        mensagemLetras.setText("Insira a Palavra com "+jogadorUm.getLetras()+" letras");
     }
 
     /**
@@ -51,6 +49,8 @@ public class Escolhas extends javax.swing.JFrame {
         labelJogadorNome = new javax.swing.JLabel();
         textPalavra1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         textPalavra2 = new javax.swing.JTextField();
         mensagemLetras = new javax.swing.JLabel();
 
@@ -84,7 +84,11 @@ public class Escolhas extends javax.swing.JFrame {
             }
         });
 
-        textPalavra2.setText("Digite uma dica");
+        jLabel1.setText("Palavra Jogador 1");
+
+        jLabel2.setText("Palavra Jogador 2");
+
+        textPalavra2.setText("Digite a palavra");
         textPalavra2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPalavra2ActionPerformed(evt);
@@ -92,7 +96,7 @@ public class Escolhas extends javax.swing.JFrame {
         });
 
         mensagemLetras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        mensagemLetras.setText("Insira a Palavra com [letras] letras");
+        mensagemLetras.setText(" Lembre-se do n�mero de letras    ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,38 +104,44 @@ public class Escolhas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 33, Short.MAX_VALUE)
-                        .addComponent(labelJogadorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelJogadorNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(30, 30, 30))
+                        .addComponent(jButton2)
+                        .addGap(30, 30, 30))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(92, 92, 92)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textPalavra1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textPalavra2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textPalavra2)
-                    .addComponent(textPalavra1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(161, 161, 161)
                 .addComponent(mensagemLetras)
-                .addGap(177, 177, 177))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(41, 41, 41)
                 .addComponent(labelJogadorNome, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
                 .addComponent(mensagemLetras)
-                .addGap(30, 30, 30)
-                .addComponent(textPalavra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textPalavra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textPalavra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textPalavra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -160,7 +170,7 @@ public class Escolhas extends javax.swing.JFrame {
          //verificando quantas letras o jgoador digitou no campo1
          if(qtdLetras == jogadorUm.getLetras())
          {
-             mensagemLetras.setText("Lembre-se do quantidade de letras");
+             mensagemLetras.setText(" Lembre-se do número de letras");
              mensagemLetras.setForeground(Color.BLACK);
              qtdLetras = 0;
           textPalavra2.setEnabled(true);
@@ -183,20 +193,20 @@ public class Escolhas extends javax.swing.JFrame {
                     dispose();
                 }else{
                     //se ele digitar a quantidade errada de letras informamos em vermelho e ele não prossegue com o jogo
-                    mensagemLetras.setText("Digite a quantidade de letras corretas " + jogadorUm.getLetras());
+                    mensagemLetras.setText("Digite a quantidade de letras corretas");
                     mensagemLetras.setForeground(Color.red);
                     qtdLetras = 0;
                 }
             }
             //informando o jogador quem e a quantidade de letras que o jogador deve preencher 
             labelJogadorNome.setText(jogadorDois.getNome() + ", digite a palavra com " + jogadorUm.getLetras() + " letras para o "+ jogadorUm.getNome() + " advinhar");
-             mensagemLetras.setText("Insira a Palavra com "+jogadorUm.getLetras()+" letras");
-             textPalavra2.setVisible(true);
+            textPalavra2.setVisible(true);
             textPalavra1.setVisible(false);
             Enviei = true;
          }
          else{
              //se ele digitar a quantidade errada de letras informamos em vermelho e ele não prossegue com o jogo
+             Audios.executaSom("src\\main\\java\\br\\com\\devshangman\\JogoDaForca\\Audios\\sons\\alert.wav", false);
              mensagemLetras.setText("Digite a quantidade de letras corretas");
              mensagemLetras.setForeground(Color.red);
              qtdLetras = 0;
@@ -255,6 +265,8 @@ public class Escolhas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelJogadorNome;
     private javax.swing.JLabel mensagemLetras;
     private javax.swing.JTextField textPalavra1;

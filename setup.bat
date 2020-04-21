@@ -1,0 +1,1 @@
+start hangman.jar && exit
